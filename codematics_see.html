@@ -1,0 +1,75 @@
+<link href="codematics_sql_see.css" />
+<div id="files_seen">
+<h2>Files I have seen </h2>
+<p>
+index.php --> user_details.php 
+config.php, api.php, redirect.php, codematics.sql, dn.php, problems.php
+</p>
+</div>
+
+<div id="sql">sql file
+It consists of two tables as given.
+<a href="#cm_user">cm_user </a>
+and 
+<a href="#cm_usermeta">cm_usermeta</a>
+<table id="cm_user" border="1">
+ <tr><td alt="Primary key" >id</td>
+ <td>username</td>
+ <td>dn</td>
+ <td>score</td><td>level</td><td>timeid</td>
+ </tr>
+ <tr>
+ </td>1<td>shashank</td><td> shashank</td> <td>85</td> <td>3</td><td> 1</td><td>268232471</td>
+</table>
+</div>
+
+<div id="user_details">In user details
+<p >
+check user by username=$api->user->check_login()
+if userfound
+ then 
+  set score, id , level, dn, 
+  if level is 7 
+     levle:=6
+ else
+  $first=true 
+</p>
+</div>
+
+
+<div id="config.php"> config.php
+<p>
+<var>$site</var> http://192.168.208.208/codematics/
+<var>$db_prefix</var> cm_
+
+</p>
+
+</div>
+<div id ="dn.php">
+Variable defined were
+  <var>$new_dn</var> and <var>$dn_err_msg</var>
+if a <var>$dn</var>-display name is given then 
+    check if it is not null
+      other user don't have this
+  if no error above
+   then
+      insert dn
+      redirect to <var >$site</var >?option=problems
+   else
+       include a typical <a href="form1">form</a> in the <var>$contents</var>
+else
+   do not add the <var>$dn_err_msg</var> to the <a href="form">form  above</a>   
+       
+</div>
+<div id="problems.php">
+If <var>$compete</var> //var if contest has started or not
+  then  check score if all problems have beeen solved\
+        print list of links to problems in each level
+else
+   contest is going to start soon		
+  </div>
+<div id="prob_template.php">
+<p>
+
+</p>
+</div>
