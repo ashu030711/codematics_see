@@ -1,11 +1,44 @@
+<link href="codematics_sql_see.css" />
+<h2>Files I have seen </h2>
+<p>
+index.php --> user_details.php 
+config.php, api.php, redirect.php, codematics.sql
+</p>
+
+<div id="sql">sql file
 It consists of two tables as given.
 <a href="#cm_user">cm_user </a>
 and 
 <a href="#cm_usermeta">cm_usermeta</a>
-<table id="cm_user">
+<table id="cm_user" border="1">
  <tr><td alt="Primary key" >id</td>
  <td>username</td>
  <td>dn</td>
  <td>score</td><td>level</td><td>timeid</td>
  </tr>
+ <tr>
+ </td>1<td>shashank</td><td> shashank</td> <td>85</td> <td>3</td><td> 1</td><td>268232471</td>
 </table>
+</div>
+
+<div id="user_details">In user details
+<p >
+check user by username=$api->user->check_login()
+if userfound
+ then 
+  set score, id , level, dn, 
+  if level is 7 
+     levle:=6
+ else
+  $first=true 
+</p>
+</div>
+
+
+<div id="config.php"> config.php
+<p>
+<var>$site</var> http://192.168.208.208/codematics/
+<var>$db_prefix</var> cm_
+
+</p>
+
