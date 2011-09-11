@@ -13,3 +13,15 @@ div p, pre{
 color:black;
 font-size:13px;
 }
+table{
+margin:1em;
+}
+table tr{
+background:#dee;
+}
+li{
+padding-left:1em;
+}
+cite{
+ color:blue;
+}

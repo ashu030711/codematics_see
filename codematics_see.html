@@ -13,26 +13,41 @@ It consists of two tables as given.
 and 
 <a href="#cm_usermeta">cm_usermeta</a>
 <table id="cm_user" border="1">
- <tr><td alt="Primary key" >id</td>
- <td>username</td>
- <td>dn</td>
- <td>score</td><td>level</td><td>timeid</td>
+ <tr><td title="Primary key int(4)" >id</td>
+
+ <td  title="unique varchar(50)">username</td>
+ <td title="display name">dn</td>
+ <td title="int(6)">score</td><td>level</td><td>timeid</td>
  </tr>
  <tr>
- </td>1<td>shashank</td><td> shashank</td> <td>85</td> <td>3</td><td> 1</td><td>268232471</td>
+ 
+ <td>1</td><td>shashank</td><td> shashank</td> <td>85</td> <td>3</td><td>268232471</td>
+ </tr>
+ </table>
+user_meta table
+<table id="table_user_meta">
+  <tr><td title="int(11) autoincrement">id </td>
+  </tr><tr><td title="unknown">uid</td>
+  </tr><tr><td title="unknown">meta</td>
+  </tr><tr><td title="unknown">value</td>
+  </tr><tr><td title="timestamp, not the timeid earlier">timeid</td>
+  </tr>
 </table>
 </div>
 
-<div id="user_details">In user details
-<p >
+<div id="user_details">In user_details.php//included in redirect.php
+require_once('user_details.php');			// Check whether person is login or not. 
+If login then fetch all the details about the user in the variables.
 
+
+<p >
 <pre>
 check user by username=$api->user->check_login()
 if userfound
- then 
-  set score, id , level, dn, 
-  if level is 7 
-     levle:=6
+ then <var>$login</var>=true//used further in <cite>redirect.php</cite> 
+  set <var>$score</var>,<var> $id</var> , <var>$level</var>, <var>$dn</var>, 
+  if $level is 7 
+     $level:=6
  else
   $first=true 
 </pre>
@@ -49,31 +64,71 @@ fig.php
 </p>
 
 </div>
-<div id ="dn.php">
-Variable defined were
+<div id ="dn.php">dn.php
+<dfn>for the purpose of changing or defining the dn </dfn>
+<pre>
+Variable defined :
   <var>$new_dn</var> and <var>$dn_err_msg</var>
-if a <var>$dn</var>-display name is given then 
-    check if it is not null
-      other user don't have this
-  if no error above
-   then
-      insert dn
+<br />
+if a <var>$dn</var>-display name is given in <var>$_POST</var>then 
+   check if it is not null or duplicate of a previous name
+      else put appropriate error message
+   if no error above
+    then
+      insert <var>dn</var> =<var>$new_dn</var> into database
       redirect to <var >$site</var >?option=problems
-   else
-       include a typical <a href="form1">form</a> in the <var>$contents</var>
+    else
+       include a typical <a href="#form1">form</a> in the <var>$contents</var>
 else
-   do not add the <var>$dn_err_msg</var> to the <a href="form">form  above</a>   
-       
+   do not add the <var>$dn_err_msg</var> to the <a href="#form1">form  above</a>   
+</pre>       
 </div>
-<div id="problems.php">
-If <var>$compete</var> //var if contest has started or not
+<div id="problems.php">problems.php
+<pre>
+If <var>$compete</var> //var for whether contest has started or not
   then  check score if all problems have beeen solved\
         print list of links to problems in each level
 else
    contest is going to start soon		
-  </div>
-<div id="prob_template.php">
+</pre>
+<p>Other information :<br />
+<ul>
+<li>max score 165 --> you have solved all the problems</li>
+<li>problems are from 1 to 5 in level 1, 6 to 10 in level2 ,..
+  <li>with problem href's as ?option=prob&nbsp;prob=<var>$j</var> for problem <var>$j</var></li>
+</li>
+</ul>
+</div>
+<div id="prob_template.php">prob_template included by redirect.php for $_GET['prob'] is set 
+oto therwise <var>$flag</var> set to true , it had also to be set false foreach 
+new request to redirect.php
 <p>
-
+ <li>includes ("ques/prob".$prob.".php");</li>
+ <li>select where uid='$id' && meta='problem' value=$prob(<cite>$_GET['prob']</cite>)</li>
+ //uid in meta table seems to be equivalent to userid as $id in user tablee
+ <li></li> 
 </p>
 </div>
+<div id="div_form_1">
+Form 1
+<form style="color:black" method='post' action='index.php?option=dn' id='form_1'>
+		<center>
+		Display Name: <input type='text' name='dn' class='text' /><br /><br />
+		<input type='submit' value='submit' class='submit' />
+		<center />
+</form>
+</div>
+<div id="global_varibles"> Global variables
+<tr><td><var>$con</var></td><td><var>$title="Codematics", $contents='', $head='',$lb=false, $option='',
+	$flag=true, $compete=true/*competition running*/, $sidebar=''$login_err_msg'', $last=6, 
+	$login=false//no login, 
+	$username='', $level=0//no level
+    $dn=''//display name null, will be later loaded from the database
+	$score=0//score variable, $first=false;//still <strong>unknown functin</strong>
+
+</div>
+<script src="http://localhost/jquery.js">
+
+$("div p").css('display', 'none');
+$("div").click(console.log(this));
+</script>
