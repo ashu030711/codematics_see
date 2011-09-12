@@ -1,9 +1,18 @@
 <link  rel="stylesheet" style="text/css" href="codematics_see.css" />
+
 <div id="files_seen">
 <h2>Files I have seen </h2>
 <p>
 index.php --> user_details.php 
 config.php, api.php, redirect.php, codematics.sql, dn.php, problems.php
+<br />
+index.php has
+<br />
+<ul>
+<li><a href="#config.php">config.php</a> </li>
+<li><a href="#global_variables.php">global_variables.php<a></li>
+<li><a href="#redirect.php">redirect.php</a></li>
+</ul>
 </p>
 </div>
 
@@ -34,7 +43,6 @@ user_meta table
   </tr>
 </table>
 </div>
-
 <div id="user_details">In user_details.php//included in redirect.php
 require_once('user_details.php');			// Check whether person is login or not. 
 If login then fetch all the details about the user in the variables.
@@ -53,10 +61,7 @@ if userfound
 </pre>
 </p>
 </div>
-
-
-<div id="config.php"> con
-fig.php
+<div id="config.php"> config.php
 <p>
 <var>$site</var> http://192.168.208.208/codematics/
 <var>$db_prefix</var> cm_
@@ -84,6 +89,7 @@ else
 </pre>       
 </div>
 <div id="problems.php">problems.php
+
 <pre>
 If <var>$compete</var> //var for whether contest has started or not
   then  check score if all problems have beeen solved\
@@ -99,36 +105,73 @@ else
 </li>
 </ul>
 </div>
-<div id="prob_template.php">prob_template included by redirect.php for $_GET['prob'] is set 
-oto therwise <var>$flag</var> set to true , it had also to be set false foreach 
-new request to redirect.php
+<div id="prob_template.php">prob_template 
 <p>
+included by redirect.php if $_GET['prob'] is set 
+otherwise <var>$flag</var> set to true , it had also to be set false foreach 
+new request to redirect.php
+
  <li>includes ("ques/prob".$prob.".php");</li>
  <li>select where uid='$id' && meta='problem' value=$prob(<cite>$_GET['prob']</cite>)</li>
  //uid in meta table seems to be equivalent to userid as $id in user tablee
  <li></li> 
 </p>
 </div>
+</div>
+
 <div id="div_form_1">
+
+
 Form 1
 <form style="color:black" method='post' action='index.php?option=dn' id='form_1'>
 		<center>
 		Display Name: <input type='text' name='dn' class='text' /><br /><br />
 		<input type='submit' value='submit' class='submit' />
-		<center />
+		</center >
 </form>
 </div>
-<div id="global_varibles"> Global variables
-<tr><td><var>$con</var></td><td><var>$title="Codematics", $contents='', $head='',$lb=false, $option='',
+<div id="global_variables.php"> Global variables
+<tr><td><var>$con</var></td><td></var>$title="Codematics", $contents='', $head='',$lb=false, $option='',
 	$flag=true, $compete=true/*competition running*/, $sidebar=''$login_err_msg'', $last=6, 
 	$login=false//no login, 
 	$username='', $level=0//no level
     $dn=''//display name null, will be later loaded from the database
 	$score=0//score variable, $first=false;//still <strong>unknown functin</strong>
-
+</tr>
 </div>
 <script src="http://localhost/jquery.js">
 
 $("div p").css('display', 'none');
 $("div").click(console.log(this));
 </script>
+<div id="redirect.php">redirect.php
+<p> has links to
+<br />
+<a href="#user_details.php">user_details.php</a>
+if <var>first</var>=true then 
+<br /><a href="#dn.php">dn.php</a>
+<p> if <var>first</var>=false then foolowing four files</p>
+<br /><a href="#problems.php">problems.php</a>//<var>option</var> problem
+<br /><a href="#prob_template.php">prob_template.php</a>//<var>option</var> prob
+<br /><a href="#check.php">check.php</a> //on submit <var>option</var>
+ <br /><a href="#scoreboard.php">scoreboard.php</a>//<var>option</var> scoreboard
+</p>
+</div>
+
+
+<div id="scorebard.php">Scoreboard.php
+<p>
+prints scores of users ordered by
+<var>score</var>--descending
+<br />
+<h3>see::probably the first use of timeid </h3><cite>also used in 
+<a href="#scoreboard.php">scoreboard.php</a>
+</cite>
+<cite>
+<a href="sidebar.php">siddebar.php</a>
+</cite>
+<var>timeid</var>--ascending
+
+
+</p>
+</div>
