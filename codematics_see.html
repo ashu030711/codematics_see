@@ -164,19 +164,16 @@ if <var>first</var>=true then
 prints scores of users ordered by
 <var>score</var>--descending
 <br />
-<h3>see::probably the first use of timeid </h3><cite>also used in 
-<a href="#scoreboard.php">scoreboard.php</a>
-</cite>
 <cite>
 <a href="#sidebar.php">sidebar.php</a>
 </cite>
-<var>timeid</var>--ascending
+<var>timeid</var>--ascending(of table <a class="table_name">cm_usermeta</a>)
 
 
 </p>
 </div>
 
-<div id="sidebar.php">
+<div id="sidebar.php">Sidebar still not read
 
 
 </div>
@@ -191,6 +188,11 @@ Check.php called by redirect.php on <var>option</var>=submit
 4    insert into <var class="table_name">cm_usermeta</var> table   
 5    also insert <a title="(calculated above by comparing with the answer according to level system )"><var>score</var></a>
 (calculated above by comparing with the answer according to level system ), <var>timeid</var> by the user's <var>id</var> 
+6    increase level of user if 4 problems solved in the current <var>$level</var>!=3
+7    if any error (in <var>$p_errmsg(e.g.<samp>Wrong answer</samp>)</var>) then show <samp>again as <var>$contents</var>(otherwise "correct answer")</samp>
+
+
+8    if the$_GET['prob'] is not set or proper set <var>$flag</var> to true
 </pre>
 
 </p>

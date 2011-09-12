@@ -1,3 +1,4 @@
+<!--
 Keywords(for myself) used:
 <br />
 <li>see::to be attended now ,to be read and understood</li>
@@ -7,8 +8,9 @@ Keywords(for myself) used:
 &lt;a&gt; stands for proposed links in the program not the db
 <br />
 &lt;var&gt;is a variable to be used in the program not the db
+-->
 <hr />
-<pre>
+
 1.ask::what can be the new scoring system ?seeing that level system is to be
 removed is it that all questions carry equal marks or questions having different
 marks can appear in any level
@@ -18,9 +20,9 @@ fields in our db e.g. we don't have passwordfa
 
 Also used as container tags as in <samp>confirn::correct::confirm</samp>
 <hr />
-</pre>
+<pre>
 --------------------------
-Table cm_user Old
+<h3>Table cm_user Old</h3>
 --------------------------
     Field		data-type			comments
    1.userid		int(4)	not-null	user-id used for login using the api
@@ -38,30 +40,40 @@ confirm::   6.timeid		varchar(16)         the time when the user last submitted 
    
    Other details:
    no password to be saved in the table as login is done using the api
-<hr />
+-------------------------
 Fields to be added
-7. attempts
-8. correct //so that <var>percentage</var> correct can be determined
+7. attempts		int(3)//total number of problems attempted, same question not counted twice
+8. correct 		int(3)//problems correct, so that <var>percentage</var> correct can be determined
+<!--
 9.like   //no of likes to the user solving one or more question or just normal <a>"like this user"</a> 
-  
+-->  
   
 -----------------------------  
-  
+  <hr />
   
   
 
 -----------------------------
-Table user_meta_table
+<h3>Table user_meta_table</h3>
 -----------------------------
    1.id int(11) not-null auto-inc (PRIMARY KEY)   //id of the problem submission
    2.uid int(11) not-null,      //id of the user who submitted this solution
    3.meta varchar(30) not-null  //e.g.'problem' 
-   4.value int(3) not-null      // e.g.'1'; value submitted by the user  as an answer
+   4.value int(3) not-null      // e.g.'1'; value of the problem submitted by the user  as an answere.g. problem no.3 then value=3
    5.timeid timestamp           //timestamp of the time when the solution was submitted 
                                 //e.g.'2010-03-10 20:06:55'
 ------------------------------	
-   6.attempt                    //no of users attempted this question
-   7.correct 					//no od users who did this question correctly
-   8.fan
+   6.attempt      int(11)       //no of users attempted this question
+   7.correct      int(11)     	//no of users who did this question correctly
+   8.like 		  int(4)       //no of users who like this question(every user one like at max) 
+
+<hr />
+-------------------------
+<h3>Table answers<h3>
+------------------------
+1. prob		int(3)			(PRIMARY-KEY)not-null//problem value e.g. problem no.3
+2.answer	varchar(32)     UNIQUE(normally only one answer possible)//sha1(md5(sol)) size  32 to take encryption into account
+
+PRMARY KEY prob corresponds to value in user_meta_table
 
 </pre>
