@@ -1,17 +1,23 @@
-Keywords used:
+Keywords(for myself) used:
 <br />
 <li>see::to be attended now ,to be read and understood</li>
 <li>confirm:question to be confirmed</li>
 <li>ask: to be asked </li>
 <li>others: others issued of programming not to be attended for the db design </li>
-&gt;a&lt; stands for proposed links in the progeam not the db
+&lt;a&gt; stands for proposed links in the program not the db
 <br />
-&gt;var&lt;is a variable to be used in the program not the db
+&lt;var&gt;is a variable to be used in the program not the db
 <hr />
 <pre>
 1.ask::what can be the new scoring system ?seeing that level system is to be
 removed is it that all questions carry equal marks or questions having different
 marks can appear in any level
+2.see::move encrypted solution from ans.php(actually details.php) to database
+3.see:api integeration --so this may mean we will have lesser 
+fields in our db e.g. we don't have passwordfa
+
+Also used as container tags as in <samp>confirn::correct::confirm</samp>
+<hr />
 </pre>
 --------------------------
 Table cm_user Old
@@ -28,14 +34,13 @@ Table cm_user Old
 									next level
    5.level		int(1)  default1    level--increasing marks per question for each level
    
-confirm::   6.timeid		varchar(16)         the time when the user a/c is created//
+confirm::   6.timeid		varchar(16)         the time when the user last submitted a confirn::correct::correct solution//
    
    Other details:
    no password to be saved in the table as login is done using the api
 <hr />
 Fields to be added
 7. attempts
-
 8. correct //so that <var>percentage</var> correct can be determined
 9.like   //no of likes to the user solving one or more question or just normal <a>"like this user"</a> 
   
@@ -55,4 +60,8 @@ Table user_meta_table
    5.timeid timestamp           //timestamp of the time when the solution was submitted 
                                 //e.g.'2010-03-10 20:06:55'
 ------------------------------	
+   6.attempt                    //no of users attempted this question
+   7.correct 					//no od users who did this question correctly
+   8.fan
+
 </pre>

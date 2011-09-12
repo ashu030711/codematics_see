@@ -168,10 +168,37 @@ prints scores of users ordered by
 <a href="#scoreboard.php">scoreboard.php</a>
 </cite>
 <cite>
-<a href="sidebar.php">siddebar.php</a>
+<a href="#sidebar.php">sidebar.php</a>
 </cite>
 <var>timeid</var>--ascending
 
 
 </p>
+</div>
+
+<div id="sidebar.php">
+
+
+</div>
+<div id="check.php">
+Check.php called by redirect.php on <var>option</var>=submit
+<p>
+<pre>
+1  Check if solution already submitted //in <var>cm_usermeta </var> table user's <var>id</var> appears corresponding to the given <var>$prob</var> and he had given the correct answer (<var>value</var>)
+  then "Cannot resubmti correct solution"
+2  else  
+3    encrypt <var>$sol</var>//<samp> sha1(md5(<var>$sol</var>))</samp>  &nbsp;&nbsp;
+4    insert into <var class="table_name">cm_usermeta</var> table   
+5    also insert <a title="(calculated above by comparing with the answer according to level system )"><var>score</var></a>
+(calculated above by comparing with the answer according to level system ), <var>timeid</var> by the user's <var>id</var> 
+</pre>
+
+</p>
+has used files
+<a href="#details.php">details.php</a>
+</div>
+<div id="detail.php">
+
+<li>defined("Codematics") or die("Restricted access");</li>
+<li>has encrypted answers corresponding to each <var>prob</var></li>
 </div>
