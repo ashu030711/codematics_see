@@ -1,0 +1,39 @@
+<pre>
+--------------------------
+Table cm_user
+--------------------------
+    Field		data-type			comments
+   1.userid		int(4)	not-null	user-id used for login using the api
+                                    auto-inc PRIMARY-KEY(check availabilty at registration
+                                     
+   2.username	varchar(50)	.		username 		 UNIQUE
+   3.displayname varchar(50)	    the name to be displayed during the competition
+                                    UNIQUE
+   4.score		int(6)  default0    score awarded so far depending on level of problems solved 
+                                    need to solve atleast three problems to move to the 
+									next level
+   5.level		int(1)  default1    level--increasing marks per question for each level
+   
+   6.timeid		varchar(16)         the time when the user a/c is created
+   
+   Other details:
+   no password to be saved in the table as login is done using the api
+  
+  
+  
+-----------------------------  
+  
+  
+  
+
+-----------------------------
+Table user_meta_table
+-----------------------------
+   1.id int(11) not-null auto-inc (PRIMARY KEY)   //id of the problem submission
+   2.uid int(11) not-null,      //id of the user who submitted this solution
+   3.meta varchar(30) not-null  //e.g.'problem' 
+   4.value int(3) not-null      // e.g.'1'; value submitted by the user  as an answer
+   5.timeid timestamp           //timestamp of the time when the solution was submitted 
+                                //e.g.'2010-03-10 20:06:55'
+------------------------------	
+</pre>
